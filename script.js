@@ -1,3 +1,26 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+addDoc,
+serverTimestamp,
+query,
+orderBy,
+onSnapshot
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+// Firebase Configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCfKHFVXG_Wqc3TxtTuRFmEpfAI258k0UE",
+  authDomain: "friendship-memories-a2711g.firebaseapp.com",
+  projectId: "friendship-memories-a2711g",
+  storageBucket: "friendship-memories-a2711g.firebasestorage.app",
+  messagingSenderId: "107932078284",
+  appId: "1:107932078284:web:9d8a59bb52f0a3abfe7269"
+};
+
 // ==========================================
 // Smooth Scroll
 // ==========================================
@@ -384,5 +407,75 @@ musicBtn.addEventListener("click", () => {
     }
 
     playing = !playing;
+
+});
+
+const board = document.getElementById("wishBoard");
+
+const sendBtn = document.getElementById("sendWish");
+
+sendBtn.addEventListener("click", async ()=>{
+
+    const name=document.getElementById("name").value.trim();
+
+    const wish=document.getElementById("wish").value.trim();
+
+    if(name==="" || wish==="") return;
+
+    await addDoc(collection(db,"wishes"),{
+
+        name:name,
+
+        wish:wish,
+
+        time:serverTimestamp()
+
+    });
+
+    document.getElementById("wish").value="";
+
+});
+
+const q=query(
+
+    collection(db,"wishes"),
+
+    orderBy("time","desc")
+
+);
+
+onSnapshot(q,(snapshot)=>{
+
+    board.innerHTML="";
+
+    snapshot.forEach(doc=>{
+
+        const data=doc.data();
+
+        const div=document.createElement("div");
+
+        div.className="wish-card";
+
+        let date="Just now";
+
+        if(data.time){
+
+            date=data.time.toDate().toLocaleString();
+
+        }
+
+        div.innerHTML=`
+
+            <h3>💙 ${data.name}</h3>
+
+            <p>${data.wish}</p>
+
+            <div class="wish-date">${date}</div>
+
+        `;
+
+        board.appendChild(div);
+
+    });
 
 });
