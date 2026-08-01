@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Friendship Memories ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <div id="lockScreen">
+
+        <div class="lockCard">
+    
+            <div class="lockIcon">🔒</div>
+    
+            <h1>Our Friendship Memories ❤️</h1>
+    
+            <p>
+                This place is only for us.
+                Enter the secret password to continue.
+            </p>
+    
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter Password"
+            >
+    
+            <button id="unlockBtn">
+                Unlock ❤️
+            </button>
+    
+            <p id="error"></p>
+    
+        </div>
+    
+    </div>
+
+<div id="website">
+
+<!-- ================= HERO ================= -->
+
+<header class="hero">
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+
+        <h1>❤️ Our Friendship ❤️</h1>
+
+        <p>
+            "True friendship isn't about being inseparable,
+            it's about being apart and nothing changes."
+        </p>
+
+        <button id="startBtn">
+            Start Journey
+            <i class="fa-solid fa-arrow-down"></i>
+        </button>
+
+    </div>
+
+</header>
+
+<section class="hero">
+
+    <button id="themeBtn">🌙 Dark Mode</button>
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+        ...
+    </div>
+
+</section>
+
+
+<!-- ================= MEMORY GALLERY ================= -->
+<!-- ================= MEMORY GALLERY ================= -->
+
+<section class="gallery" id="gallery">
+
+    <h2>📸 Our Memories</h2>
+    <p>click on them to view </p>
+    <div class="gallery-grid">
+
+        <div class="photo"><img src="images/photo1.webp" alt="Memory 1"></div>
+        <div class="photo"><img src="images/photo2.webp" alt="Memory 2"></div>
+        <div class="photo"><img src="images/photo3.jpg" alt="Memory 3"></div>
+
+        <div class="photo"><img src="images/photo4.jpg" alt="Memory 4"></div>
+        <div class="photo"><img src="images/photo5.png" alt="Memory 5"></div>
+        <div class="photo"><img src="images/photo6.jpeg" alt="Memory 6"></div>
+
+        <div class="photo"><img src="images/photo7.jpeg" alt="Memory 7"></div>
+        <div class="photo"><img src="images/photo8.jpeg" alt="Memory 8"></div>
+        <div class="photo"><img src="images/photo9.png" alt="Memory 9"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LETTER ================= -->
+
+<section class="letter-section">
+
+    <h2>💌 Open Your Letter</h2>
+
+    <div class="envelope-container">
+
+        <div class="envelope" id="envelope">
+
+            <div class="envelope-back"></div>
+
+            <div class="flap"></div>
+
+            <div class="letter-paper">
+
+                <div class="paper-content">
+
+                    <h3>Dear Ana, ❤️</h3>
+
+                    <p>
+                        The completely random way two people somehow become
+                        friends. 🩵
+
+                        Thousands of beautiful conversations,
+                        countless smiles,
+                        and endless memories I'll always treasure.
+
+                        Just two hearts caring for each other. 🫂
+
+                        Thank you for being exactly the kind of weird
+                        that perfectly matches mine.
+
+                        Thank you for being the laughter in my darkest days,
+                        a soul I trust every way. 🫶
+
+                        No matter where life takes us,
+                        I'll always be grateful
+                        that life made our paths cross.
+                        <br>
+
+                        ❤️ Your Gube
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= TIMELINE ================= -->
+
+<section class="timeline">
+
+    <h2>🕒 Our Journey</h2>
+
+    <div class="event">
+        <span>11/07/2024</span>
+        <p>First Text "Happy birthday! May you stay blessed.💖"</p>
+    </div>
+
+    <div class="event">
+        <span>03/11/2025</span>
+        <p>Prank of "knowing mee.."</p>
+    </div>
+
+    <div class="event">
+        <span>06/12/2025</span>
+        <p>We first met</p>
+    </div>
+
+    <div class="event">
+        <span>2026</span>
+        <p>Created countless memories.
+           Still making new adventures.</p>
+    </div>
+
+</section>
+
+<!-- ================= FRIENDSHIP DAY ================= -->
+
+<section class="Event-day">
+
+    <h2>🎉 Events </h2>
+
+    <div class="wish-board">
+
+        <div class="my-wish">
+
+            <h3>💝 My Wish For You</h3>
+
+            <p>
+                Happy Friendship Day, Ana! ❤️<br><br>
+
+                Thank you for filling my life with laughter,
+                kindness, unforgettable memories,
+                and endless support 😊.
+                <br>
+                Stay happy, keep smiling,
+                and never change the beautiful person you are 😊.
+                <br>
+                Wishing you endless happiness today and always 💫 .
+                <br><br>
+                Your Gube ❤️
+            </p>
+
+        </div>
+
+        <div class="your-wish">
+
+            <h3>📝 Your Wish For Me</h3>
+
+            <textarea
+                id="wishInput"
+                placeholder="Write your Friendship Day wish here... ❤️"
+            ></textarea>
+            <p>Your Ana ❤️</p>
+            <button id="saveWish">
+                Save My Wish 💖
+            </button>
+
+            <p id="savedMsg"></p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= MUSIC PLAYER ================= -->
+
+<audio id="bgMusic" loop>
+    <source src="music/Munjaane-Manjalli.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-player">
+
+    <button id="musicBtn">
+        ▶️
+    </button>
+
+    <span id="musicText">
+        Play Your Song " " 
+    </span>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        Made with ❤️ for My Ana.
+    </p>
+
+</footer>
+
+</div>
+
+<!-- ================= IMAGE MODAL ================= -->
+
+<div class="modal" id="modal">
+
+    <span id="close">&times;</span>
+
+    <img id="modalImg">
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
