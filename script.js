@@ -411,70 +411,65 @@ musicBtn.addEventListener("click", () => {
 });
 
 const board = document.getElementById("wishBoard");
-
 const sendBtn = document.getElementById("sendWish");
 
-sendBtn.addEventListener("click", async ()=>{
+sendBtn.addEventListener("click", async () => {
 
-    const name=document.getElementById("name").value.trim();
+    const name = document.getElementById("name").value;
+    const wish = document.getElementById("wish").value.trim();
 
-    const wish=document.getElementById("wish").value.trim();
+    if (wish === "") return;
 
-    if(name==="" || wish==="") return;
+    await addDoc(collection(db, "wishes"), {
 
-    await addDoc(collection(db,"wishes"),{
-
-        name:name,
-
-        wish:wish,
-
-        time:serverTimestamp()
+        name,
+        wish,
+        time: serverTimestamp()
 
     });
 
-    document.getElementById("wish").value="";
+    document.getElementById("wish").value = "";
 
 });
 
-const q=query(
-
-    collection(db,"wishes"),
-
-    orderBy("time","desc")
-
+const q = query(
+    collection(db, "wishes"),
+    orderBy("time", "desc")
 );
 
-onSnapshot(q,(snapshot)=>{
+onSnapshot(q, (snapshot) => {
 
-    board.innerHTML="";
+    board.innerHTML = "";
 
-    snapshot.forEach(doc=>{
+    snapshot.forEach((doc) => {
 
-        const data=doc.data();
+        const data = doc.data();
 
-        const div=document.createElement("div");
+        const card = document.createElement("div");
 
-        div.className="wish-card";
+        card.className = "wish-card";
 
-        let date="Just now";
+        let date = "";
 
-        if(data.time){
+        if (data.time) {
 
-            date=data.time.toDate().toLocaleString();
+            date = data.time.toDate().toLocaleString();
 
         }
 
-        div.innerHTML=`
+        card.innerHTML = `
 
-            <h3>💙 ${data.name}</h3>
+            <h3>${data.name}</h3>
 
             <p>${data.wish}</p>
 
-            <div class="wish-date">${date}</div>
+            <div class="wish-date">
+                🕒 ${date}
+            </div>
 
         `;
 
-        board.appendChild(div);
+        board.appendChild(card);
 
     });
 
