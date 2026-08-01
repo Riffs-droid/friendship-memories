@@ -379,7 +379,7 @@ musicBtn.addEventListener("click", () => {
 
         musicBtn.innerHTML = "▶️";
 
-        musicText.innerHTML = "Continue";
+        musicText.innerHTML = "Continue Playing";
 
     }
 
