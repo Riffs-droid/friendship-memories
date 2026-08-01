@@ -200,51 +200,30 @@
 
 <!-- ================= FRIENDSHIP DAY ================= -->
 
-<section class="Event-day">
+<section class="wish-section">
 
-    <h2>🎉 Events </h2>
+    <h2>💝 Friendship Wall</h2>
 
-    <div class="wish-board">
+    <div class="wish-form">
 
-        <div class="my-wish">
+        <input
+            type="text"
+            id="name"
+            placeholder="Your Name"
+        >
 
-            <h3>💝 My Wish For You</h3>
+        <textarea
+            id="wish"
+            placeholder="Write your wish..."
+        ></textarea>
 
-            <p>
-                Happy Friendship Day, Ana! ❤️<br><br>
-
-                Thank you for filling my life with laughter,
-                kindness, unforgettable memories,
-                and endless support 😊.
-                <br>
-                Stay happy, keep smiling,
-                and never change the beautiful person you are 😊.
-                <br>
-                Wishing you endless happiness today and always 💫 .
-                <br><br>
-                Your Gube ❤️
-            </p>
-
-        </div>
-
-        <div class="your-wish">
-
-            <h3>📝 Your Wish For Me</h3>
-
-            <textarea
-                id="wishInput"
-                placeholder="Write your thoughts wish here... ❤️"
-            ></textarea>
-            <p>Your Ana ❤️</p>
-            <button id="saveWish">
-                Save My Wish 💖
-            </button>
-
-            <p id="savedMsg"></p>
-
-        </div>
+        <button id="sendWish">
+            Send ❤️
+        </button>
 
     </div>
+
+    <div id="wishBoard"></div>
 
 </section>
 
