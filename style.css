@@ -1225,3 +1225,86 @@ padding:10px 16px;
 }
 
 }
+
+.wish-form{
+
+    max-width:700px;
+
+    margin:auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+.wish-form input,
+.wish-form textarea{
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    font-size:16px;
+
+}
+
+.wish-form textarea{
+
+    min-height:120px;
+
+    resize:none;
+
+}
+
+.wish-form button{
+
+    width:200px;
+
+    margin:auto;
+
+}
+
+#wishBoard{
+
+    max-width:800px;
+
+    margin:50px auto;
+
+}
+
+.wish-card{
+
+    background:white;
+
+    color:#333;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+}
+
+.wish-card h3{
+
+    color:#ff6b81;
+
+}
+
+.wish-date{
+
+    margin-top:15px;
+
+    color:#777;
+
+    font-size:14px;
+
+}
