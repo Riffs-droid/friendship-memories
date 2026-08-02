@@ -343,22 +343,27 @@ function createSparkle() {
 // Create a sparkle every 350ms
 setInterval(createSparkle, 350);
 
-/* =================================================/* ===================================================
-   ENVELOPE CLICK
+/* ===================================================
+   ENVELOPE OPENING ANIMATION
 =================================================== */
 
-envelope.addEventListener("click", () => {
+const envelope = document.getElementById("envelope");
 
-    envelope.classList.toggle("open");
+if (envelope) {
 
-    // Only show hearts when opening
-    if (envelope.classList.contains("open")) {
+    envelope.addEventListener("click", () => {
 
-        heartBurst();
+        envelope.classList.toggle("open");
 
-    }
+        if (envelope.classList.contains("open")) {
 
-});
+            heartBurst();
+
+        }
+
+    });
+
+}
 
 /* /* ===================================================
    HEART BURST EFFECT
