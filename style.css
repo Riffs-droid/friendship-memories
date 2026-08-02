@@ -647,6 +647,50 @@ transform:scale(1);
     transform:translate(-50%,-310px);
 
 }
+/* ==========================================
+   Timeline
+========================================== */
+
+.timeline{
+
+max-width:900px;
+
+margin:auto;
+
+}
+
+.event{
+
+padding:25px;
+
+margin:20px 0;
+
+display:flex;
+
+gap:25px;
+
+align-items:center;
+
+}
+
+.event span{
+
+font-size:28px;
+
+font-weight:bold;
+
+color:#ffeaa7;
+
+min-width:90px;
+
+}
+
+.event p{
+
+font-size:18px;
+
+}
+
 
 /* ===================================================
    FRIENDSHIP WALL
