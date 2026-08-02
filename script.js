@@ -28,19 +28,12 @@ import {
 =================================================== */
 
 const firebaseConfig = {
-
-    apiKey: "YOUR_API_KEY",
-
-    authDomain: "YOUR_AUTH_DOMAIN",
-
-    projectId: "YOUR_PROJECT_ID",
-
-    storageBucket: "YOUR_STORAGE_BUCKET",
-
-    messagingSenderId: "YOUR_SENDER_ID",
-
-    appId: "YOUR_APP_ID"
-
+  apiKey: "AIzaSyCfKHFVXG_Wqc3TxtTuRFmEpfAI258k0UE",
+  authDomain: "friendship-memories-a2711g.firebaseapp.com",
+  projectId: "friendship-memories-a2711g",
+  storageBucket: "friendship-memories-a2711g.firebasestorage.app",
+  messagingSenderId: "107932078284",
+  appId: "1:107932078284:web:9d8a59bb52f0a3abfe7269"
 };
 
 
@@ -414,3 +407,90 @@ function heartBurst() {
     }
 
 }
+
+/* ===================================================
+   FRIENDSHIP WALL
+=================================================== */
+
+const board = document.getElementById("wishBoard");
+const sendBtn = document.getElementById("sendWish");
+
+sendBtn.addEventListener("click", async () => {
+
+    const name = document.getElementById("name").value;
+    const wish = document.getElementById("wish").value.trim();
+
+    if (wish === "") {
+        alert("Write something first ❤️");
+        return;
+    }
+
+    try {
+
+        await addDoc(collection(db, "wishes"), {
+
+            name: name,
+            wish: wish,
+            time: serverTimestamp()
+
+        });
+
+        document.getElementById("wish").value = "";
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert("Could not post.");
+
+    }
+
+});
+
+
+const wishesQuery = query(
+
+    collection(db, "wishes"),
+
+    orderBy("time","desc")
+
+);
+
+
+onSnapshot(wishesQuery,(snapshot)=>{
+
+    board.innerHTML="";
+
+    snapshot.forEach((doc)=>{
+
+        const data=doc.data();
+
+        const card=document.createElement("div");
+
+        card.className="wish-card";
+
+        let date="";
+
+        if(data.time){
+
+            date=data.time.toDate().toLocaleString();
+
+        }
+
+        card.innerHTML=`
+
+            <h3>${data.name}</h3>
+
+            <p>${data.wish}</p>
+
+            <span class="wish-date">${date}</span>
+
+        `;
+
+        board.appendChild(card);
+
+    });
+
+});
