@@ -1,161 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Friendship Memories ❤️</title>
+
+    <title>Our Friendship ❤️</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome -->
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
+
 <body>
+
+    <!-- =========================
+         PASSWORD SCREEN
+    ========================== -->
 
     <div id="lockScreen">
 
-        <div class="lockCard">
-    
-            <div class="lockIcon">🔒</div>
-    
+        <div class="lock-card">
+
+            <div class="lock-icon">
+                🔒
+            </div>
+
             <h1>Our Friendship Memories ❤️</h1>
-    
+
             <p>
-                This place is only for us.
-                Enter the secret password to continue.
+                Welcome to our little world.
+                Enter the password to continue.
             </p>
-    
+
             <input
                 type="password"
                 id="password"
-                placeholder="Enter Password"
-            >
-    
+                placeholder="Enter Password">
+
             <button id="unlockBtn">
                 Unlock ❤️
             </button>
-    
+
             <p id="error"></p>
-    
+
         </div>
-    
+
     </div>
 
-<div id="website">
+    <!-- =========================
+         WEBSITE
+    ========================== -->
 
-<!-- ================= HERO ================= -->
+    <div id="website">
 
-<header class="hero">
+        <!-- Theme Button -->
 
-    <div class="overlay"></div>
-
-    <div class="hero-content">
-
-        <h1>❤️ Our Friendship ❤️</h1>
-
-        <p>
-            "True friendship isn't about being inseparable,
-            it's about being apart and nothing changes."
-        </p>
-
-        <button id="startBtn">
-            Start Journey
-            <i class="fa-solid fa-arrow-down"></i>
+        <button id="themeBtn">
+            🌙 Dark Mode
         </button>
 
-    </div>
+        <!-- =========================
+             HERO
+        ========================== -->
 
-</header>
+        <header class="hero">
 
-<section class="hero">
+            <div class="overlay"></div>
 
-    <button id="themeBtn">🌙 Dark Mode</button>
+            <div class="hero-content">
 
-    <div class="overlay"></div>
+                <h1>
+                    ❤️ Our Friendship ❤️
+                </h1>
 
-    <div class="hero-content">
-        ...
-    </div>
+                <p>
 
-</section>
+                    "True friendship isn't about
+                    being inseparable.
+                    It's about being apart
+                    and nothing changes."
 
+                </p>
 
-<!-- ================= MEMORY GALLERY ================= -->
-<!-- ================= MEMORY GALLERY ================= -->
+                <button id="startBtn">
 
-<section class="gallery" id="gallery">
+                    Start Journey
 
-    <h2>📸 Our Memories</h2>
-    <p>click on them to view </p>
-    <div class="gallery-grid">
+                    <i class="fa-solid fa-arrow-down"></i>
 
-        <div class="photo"><img src="images/photo1.webp" alt="Memory 1"></div>
-        <div class="photo"><img src="images/photo2.webp" alt="Memory 2"></div>
-        <div class="photo"><img src="images/photo3.jpg" alt="Memory 3"></div>
+                </button>
 
-        <div class="photo"><img src="images/photo4.jpg" alt="Memory 4"></div>
-        <div class="photo"><img src="images/photo5.png" alt="Memory 5"></div>
-        <div class="photo"><img src="images/photo6.jpeg" alt="Memory 6"></div>
+            </div>
 
-        <div class="photo"><img src="images/photo7.jpeg" alt="Memory 7"></div>
-        <div class="photo"><img src="images/photo8.jpeg" alt="Memory 8"></div>
-        <div class="photo"><img src="images/photo9.png" alt="Memory 9"></div>
-        <div class="photo"><img src="images/photo10.png" alt="flower"></div>
+        </header>
+    <!-- =========================
+         MEMORY GALLERY
+    ========================== -->
 
-        
-    </div>
+    <section class="gallery" id="gallery">
 
-</section>
+        <h2>📸 Our Memories</h2>
 
+        <p class="section-text">
+            Every picture tells a story ❤️
+        </p>
 
-<!-- ================= LETTER ================= -->
+        <div class="gallery-grid">
 
-<section class="letter-section">
+            <div class="photo"><img src="images/photo1.webp" alt=""></div>
+            <div class="photo"><img src="images/photo2.webp" alt=""></div>
+            <div class="photo"><img src="images/photo3.jpg" alt=""></div>
 
-    <h2>💌 Open Your Letter</h2>
+            <div class="photo"><img src="images/photo4.jpg" alt=""></div>
+            <div class="photo"><img src="images/photo5.png" alt=""></div>
+            <div class="photo"><img src="images/photo6.jpeg" alt=""></div>
 
-    <div class="envelope-container">
+            <div class="photo"><img src="images/photo7.jpeg" alt=""></div>
+            <div class="photo"><img src="images/photo8.jpeg" alt=""></div>
+            <div class="photo"><img src="images/photo9.png" alt=""></div>
 
-        <div class="envelope" id="envelope">
+        </div>
 
-            <div class="envelope-back"></div>
+    </section>
 
-            <div class="flap"></div>
+    <!-- =========================
+         LETTER
+    ========================== -->
 
-            <div class="letter-paper">
+    <section class="letter-section">
 
-                <div class="paper-content">
+        <h2>💌 A Letter For You</h2>
 
-                    <h3>Dear Ana, ❤️</h3>
+        <div class="envelope-container">
 
-                    <p>
-                        The completely random way two people somehow become
-                        friends. 🩵
+            <div class="envelope" id="envelope">
 
-                        Thousands of beautiful conversations,
-                        countless smiles,
-                        and endless memories I'll always treasure.
+                <div class="envelope-back"></div>
 
-                        Just two hearts caring for each other. 🫂
+                <div class="flap"></div>
 
-                        Thank you for being exactly the kind of weird
-                        that perfectly matches mine.
+                <div class="letter-paper">
 
-                        Thank you for being the laughter in my darkest days,
-                        a soul I trust every way. 🫶
+                    <div class="paper-content">
 
-                        No matter where life takes us,
-                        I'll always be grateful
-                        that life made our paths cross.
-                        <br>
+                        <h3>Dear Ana ❤️</h3>
 
-                        ❤️ Your Gube
+                        <p>
 
-                    </p>
+The completely random way two people somehow became friends. 🩵
+
+Thousands of beautiful conversations,
+countless laughs,
+and memories that I'll treasure forever.
+
+Just two hearts caring for each other. 🫂
+
+Thank you for being exactly the kind of weird
+that perfectly matches mine.
+
+Thank you for being the laughter in my darkest days,
+and the person I can always trust. 🫶
+
+No matter where life takes us,
+I'll always be grateful that life made our paths cross.
+
+Happy Friendship Day ❤️
+
+Love,
+Your Gube 💙
+
+                        </p>
+
+                    </div>
 
                 </div>
 
@@ -163,115 +185,136 @@
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+    <!-- =========================
+         TIMELINE
+    ========================== -->
 
+    <section class="timeline">
 
+        <h2>🕒 Our Journey</h2>
 
-<!-- ================= TIMELINE ================= -->
+        <div class="event">
+            <span>11 Jul 2024</span>
+            <p>First Birthday Wish ❤️</p>
+        </div>
 
-<section class="timeline">
+        <div class="event">
+            <span>03 Nov 2025</span>
+            <p>The "Knowing Mee..." prank 😂</p>
+        </div>
 
-    <h2>🕒 Our Journey</h2>
+        <div class="event">
+            <span>06 Dec 2025</span>
+            <p>Our first meeting 🤍</p>
+        </div>
 
-    <div class="event">
-        <span>11/07/2024</span>
-        <p>First Text "Happy birthday! May you stay blessed.💖"</p>
-    </div>
+        <div class="event">
+            <span>2026</span>
+            <p>Countless memories... and many more to come ❤️</p>
+        </div>
 
-    <div class="event">
-        <span>03/11/2025</span>
-        <p>Prank of "knowing mee.."</p>
-    </div>
+    </section>
 
-    <div class="event">
-        <span>06/12/2025</span>
-        <p>We first met</p>
-    </div>
+    <!-- =========================
+         FRIENDSHIP WALL
+    ========================== -->
 
-    <div class="event">
-        <span>2026</span>
-        <p>Created countless memories.
-           Still making new adventures.</p>
-    </div>
+    <section class="wall-section">
 
-</section>
+        <h2>💙 Friendship Wall</h2>
 
-<!-- ================= FRIENDSHIP DAY ================= -->
+        <p class="section-text">
+            Leave messages for each other anytime.
+        </p>
 
-<section class="Event-day">
+        <div class="wall-input">
 
-    <h2>💝 Friendship Wall</h2>
+            <select id="name">
 
-    <div class="wall-input">
+                <option value="Gube">
+                    👦 Gube
+                </option>
 
-        <select id="name">
+                <option value="Ana">
+                    👧 Ana
+                </option>
 
-            <option value="👦 Gube">👦 Gube</option>
+            </select>
 
-            <option value="👧 Ana">👧 Ana</option>
+            <textarea
+                id="wish"
+                placeholder="Write something from your heart... ❤️"></textarea>
 
-        </select>
+            <button id="sendWish">
+                Post ❤️
+            </button>
 
-        <textarea
-            id="wish"
-            placeholder="Write something from your heart... ❤️"
-        ></textarea>
+        </div>
 
-        <button id="sendWish">
-            Post ❤️
+        <div id="wishBoard"></div>
+
+    </section>
+
+    <!-- =========================
+         MUSIC PLAYER
+    ========================== -->
+
+    <audio id="bgMusic" loop>
+
+        <source
+            src="music/Munjaane-Manjalli.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+    <div class="music-player">
+
+        <button id="musicBtn">
+
+            ▶️
+
         </button>
 
+        <span id="musicText">
+
+            Play Our Song ❤️
+
+        </span>
+
     </div>
 
-    <div id="wishBoard"></div>
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
-</section>
+    <footer>
 
-<!-- ================= MUSIC PLAYER ================= -->
+        <p>
 
-<audio id="bgMusic" loop>
-    <source src="music/Munjaane-Manjalli.mp3" type="audio/mpeg">
-</audio>
+            Made with ❤️ by Gube for Ana
 
-<div class="music-player">
+        </p>
 
-    <button id="musicBtn">
-        ▶️
-    </button>
+    </footer>
 
-    <span id="musicText">
-        Play Your Song " " 
-    </span>
+    </div>
 
-</div>
+    <!-- =========================
+         IMAGE MODAL
+    ========================== -->
 
-<!-- ================= FOOTER ================= -->
+    <div class="modal" id="modal">
 
-<footer>
+        <span id="close">&times;</span>
 
-    <p>
-        Made with ❤️ for My Ana.
-    </p>
+        <img id="modalImg">
 
-</footer>
+    </div>
 
-</div>
-
-<!-- ================= IMAGE MODAL ================= -->
-
-<div class="modal" id="modal">
-
-    <span id="close">&times;</span>
-
-    <img id="modalImg">
-
-</div>
-
-
-
-<script type="module" src="script.js"></script>
+    <script type="module" src="script.js"></script>
 
 </body>
+
 </html>
