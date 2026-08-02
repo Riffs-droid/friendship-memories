@@ -1,194 +1,337 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+/* ===================================================
+   OUR FRIENDSHIP ❤️
+   SCRIPT.JS
+=================================================== */
+
+
+/* ===================================================
+   FIREBASE IMPORTS
+=================================================== */
+
+import { initializeApp } from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
 import {
-getFirestore,
-collection,
-addDoc,
-serverTimestamp,
-query,
-orderBy,
-onSnapshot
-}
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp,
+    query,
+    orderBy,
+    onSnapshot
+} from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-// Firebase Configuration
+
+/* ===================================================
+   FIREBASE CONFIG
+=================================================== */
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCfKHFVXG_Wqc3TxtTuRFmEpfAI258k0UE",
-  authDomain: "friendship-memories-a2711g.firebaseapp.com",
-  projectId: "friendship-memories-a2711g",
-  storageBucket: "friendship-memories-a2711g.firebasestorage.app",
-  messagingSenderId: "107932078284",
-  appId: "1:107932078284:web:9d8a59bb52f0a3abfe7269"
+
+    apiKey: "YOUR_API_KEY",
+
+    authDomain: "YOUR_AUTH_DOMAIN",
+
+    projectId: "YOUR_PROJECT_ID",
+
+    storageBucket: "YOUR_STORAGE_BUCKET",
+
+    messagingSenderId: "YOUR_SENDER_ID",
+
+    appId: "YOUR_APP_ID"
+
 };
 
-// ==========================================
-// Smooth Scroll
-// ==========================================
+
+/* ===================================================
+   INITIALIZE FIREBASE
+=================================================== */
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+/* ===================================================
+   PASSWORD
+=================================================== */
+
+const PASSWORD = "ana2711gube";
+
+
+/* ===================================================
+   DOM ELEMENTS
+=================================================== */
+
+const website = document.getElementById("website");
+
+const lockScreen = document.getElementById("lockScreen");
+
+const unlockBtn = document.getElementById("unlockBtn");
+
+const passwordInput = document.getElementById("password");
+
+const error = document.getElementById("error");
 
 const startBtn = document.getElementById("startBtn");
 
-startBtn.addEventListener("click", () => {
-    document.getElementById("gallery").scrollIntoView({
-        behavior: "smooth"
-    });
-});
-
-
-// ==========================================
-// Dark Mode
-// ==========================================
-
 const themeBtn = document.getElementById("themeBtn");
 
-themeBtn.addEventListener("click", () => {
 
-    document.body.classList.toggle("dark");
+/* ===================================================
+   PASSWORD SCREEN
+=================================================== */
 
-    if (document.body.classList.contains("dark")) {
-        themeBtn.innerHTML = "☀️ Light Mode";
-    } else {
-        themeBtn.innerHTML = "🌙 Dark Mode";
+function unlockWebsite(){
+
+    if(passwordInput.value.trim() === PASSWORD){
+
+        lockScreen.style.opacity = "0";
+
+        setTimeout(()=>{
+
+            lockScreen.style.display = "none";
+
+            website.style.display = "block";
+
+            website.style.animation = "fadeIn .8s";
+
+        },500);
+
+    }
+
+    else{
+
+        error.innerHTML = "❌ Wrong Password";
+
+        const card = document.querySelector(".lockCard");
+
+        card.classList.add("shake");
+
+        setTimeout(()=>{
+
+            card.classList.remove("shake");
+
+        },400);
+
+    }
+
+}
+
+
+unlockBtn.addEventListener("click", unlockWebsite);
+
+
+passwordInput.addEventListener("keypress",(e)=>{
+
+    if(e.key==="Enter"){
+
+        unlockWebsite();
+
     }
 
 });
 
 
-// ==========================================
-// Image Modal
-// ==========================================
+/* ===================================================
+   HERO BUTTON
+=================================================== */
+
+startBtn.addEventListener("click",()=>{
+
+    document.getElementById("gallery").scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+
+});
+
+
+/* ===================================================
+   DARK MODE
+=================================================== */
+
+if(localStorage.getItem("theme")==="dark"){
+
+    document.body.classList.add("dark");
+
+    themeBtn.innerHTML="☀️ Light Mode";
+
+}
+
+
+themeBtn.addEventListener("click",()=>{
+
+    document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")){
+
+        themeBtn.innerHTML="☀️ Light Mode";
+
+        localStorage.setItem("theme","dark");
+
+    }
+
+    else{
+
+        themeBtn.innerHTML="🌙 Dark Mode";
+
+        localStorage.setItem("theme","light");
+
+    }
+
+});
+
+
+/* ===================================================
+   HERO FADE IN
+=================================================== */
+
+window.addEventListener("load",()=>{
+
+    const hero=document.querySelector(".hero-content");
+
+    hero.style.opacity="1";
+
+    hero.style.transform="translateY(0)";
+
+});
+
+/* ===================================================
+   IMAGE MODAL
+=================================================== */
 
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modalImg");
 const closeBtn = document.getElementById("close");
 
-document.querySelectorAll(".photo img").forEach(img => {
+const galleryImages = document.querySelectorAll(".photo img");
+
+// Open image
+galleryImages.forEach((img) => {
 
     img.addEventListener("click", () => {
 
         modal.style.display = "flex";
+
         modalImg.src = img.src;
+
+        modalImg.alt = img.alt;
+
+        document.body.style.overflow = "hidden";
 
     });
 
 });
 
-closeBtn.addEventListener("click", () => {
+// Close button
+closeBtn.addEventListener("click", closeModal);
 
-    modal.style.display = "none";
-
-});
-
+// Click outside image
 modal.addEventListener("click", (e) => {
 
     if (e.target === modal) {
-        modal.style.display = "none";
+
+        closeModal();
+
     }
 
 });
 
+// ESC key closes modal
+document.addEventListener("keydown", (e) => {
 
-// ==========================================
-// Scroll Reveal Animation
-// ==========================================
+    if (e.key === "Escape") {
 
-const revealItems = document.querySelectorAll(
-    ".photo, .quote-box, .event"
-);
+        closeModal();
 
-revealItems.forEach(item => {
-
-    item.style.opacity = "0";
-    item.style.transform = "translateY(50px)";
-    item.style.transition = "all .8s ease";
+    }
 
 });
 
-const reveal = () => {
+function closeModal(){
 
-    revealItems.forEach(item => {
+    modal.style.display = "none";
 
-        const top = item.getBoundingClientRect().top;
+    document.body.style.overflow = "auto";
 
-        if (top < window.innerHeight - 100) {
+}
+/* ===================================================
+   SCROLL REVEAL ANIMATION
+=================================================== */
 
-            item.style.opacity = "1";
-            item.style.transform = "translateY(0)";
+// Select all elements that should animate
+const revealElements = document.querySelectorAll(
+    ".photo, .event, .wish-card, .music-player, .letter-section, .gallery, .timeline, .Event-day, footer"
+);
+
+// Initial hidden state
+revealElements.forEach((element) => {
+
+    element.style.opacity = "0";
+    element.style.transform = "translateY(50px)";
+    element.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+
+});
+
+// Reveal function
+function revealOnScroll() {
+
+    revealElements.forEach((element) => {
+
+        const elementTop = element.getBoundingClientRect().top;
+
+        const revealPoint = window.innerHeight - 100;
+
+        if (elementTop < revealPoint) {
+
+            element.style.opacity = "1";
+            element.style.transform = "translateY(0)";
 
         }
 
     });
 
-};
+}
 
-window.addEventListener("scroll", reveal);
-window.addEventListener("load", reveal);
+// Run on page load
+window.addEventListener("load", revealOnScroll);
 
+// Run while scrolling
+window.addEventListener("scroll", revealOnScroll);
 
-// ==========================================
-// Rotating Friendship Quotes
-// ==========================================
-
-const quotes = [
-    "Friends make every moment unforgettable ❤️",
-    "Together is our favorite place to be.",
-    "The best memories are made with friends.",
-    "Friendship is one soul in two bodies.",
-    "Distance means nothing when friendship means everything.",
-    "Some people make life beautiful just by being in it.",
-    "Every laugh with you became a lifelong memory.",
-    "Real friends never leave your heart."
-];
-
-const quoteBoxes = document.querySelectorAll(".quote-box");
-
-let quoteIndex = 0;
-
-setInterval(() => {
-
-    quoteBoxes.forEach((box, i) => {
-
-        box.style.opacity = "0";
-
-        setTimeout(() => {
-
-            box.innerHTML =
-                '"' +
-                quotes[(quoteIndex + i) % quotes.length] +
-                '"';
-
-            box.style.opacity = "1";
-
-        }, 300);
-
-    });
-
-    quoteIndex++;
-
-}, 5000);
-
-
-// ==========================================
-// Floating Sparkles
-// ==========================================
+/* ===================================================
+   FLOATING SPARKLES
+=================================================== */
 
 function createSparkle() {
 
     const sparkle = document.createElement("div");
 
-    sparkle.className = "sparkle";
+    sparkle.classList.add("sparkle");
 
+    // Random horizontal position
     sparkle.style.left = Math.random() * window.innerWidth + "px";
 
+    // Random size
+    const size = Math.random() * 8 + 4;
+
+    sparkle.style.width = size + "px";
+    sparkle.style.height = size + "px";
+
+    // Random animation duration
     sparkle.style.animationDuration =
-        3 + Math.random() * 4 + "s";
+        (3 + Math.random() * 4) + "s";
 
-    sparkle.style.width =
-        6 + Math.random() * 8 + "px";
-
-    sparkle.style.height = sparkle.style.width;
+    // Random opacity
+    sparkle.style.opacity =
+        (0.4 + Math.random() * 0.6);
 
     document.body.appendChild(sparkle);
 
+    // Remove after animation
     setTimeout(() => {
 
         sparkle.remove();
@@ -197,280 +340,72 @@ function createSparkle() {
 
 }
 
-setInterval(createSparkle, 500);
+// Create a sparkle every 350ms
+setInterval(createSparkle, 350);
 
+/* =================================================/* ===================================================
+   ENVELOPE CLICK
+=================================================== */
 
-// ==========================================
-// Save Theme
-// ==========================================
-
-if (localStorage.getItem("theme") === "dark") {
-
-    document.body.classList.add("dark");
-    themeBtn.innerHTML = "☀️ Light Mode";
-
-}
-
-themeBtn.addEventListener("click", () => {
-
-    if (document.body.classList.contains("dark")) {
-
-        localStorage.setItem("theme", "dark");
-
-    } else {
-
-        localStorage.setItem("theme", "light");
-
-    }
-
-});
-
-
-// ==========================================
-// Hero Fade-In
-// ==========================================
-
-window.addEventListener("load", () => {
-
-    document.querySelector(".hero-content").style.opacity = "1";
-    document.querySelector(".hero-content").style.transform = "translateY(0)";
-
-});
-
-// ==========================
-// Envelope Animation
-// ==========================
-
-const envelope = document.getElementById("envelope");
-
-
-function heartBurst(){
-
-    for(let i=0;i<15;i++){
-
-        const heart=document.createElement("div");
-
-        heart.innerHTML="💖";
-
-        heart.style.position="fixed";
-
-        heart.style.left=(window.innerWidth/2-30+Math.random()*60)+"px";
-
-        heart.style.top=(window.innerHeight/2)+"px";
-
-        heart.style.fontSize=(18+Math.random()*18)+"px";
-
-        heart.style.pointerEvents="none";
-
-        heart.style.transition="all 2s ease";
-
-        document.body.appendChild(heart);
-
-        setTimeout(()=>{
-
-            heart.style.transform=
-            `translate(${(Math.random()-0.5)*400}px,-${200+Math.random()*250}px) rotate(${Math.random()*360}deg)`;
-
-            heart.style.opacity=0;
-
-        },20);
-
-        setTimeout(()=>heart.remove(),2200);
-
-    }
-
-}
-
-envelope.addEventListener("click",()=>{
+envelope.addEventListener("click", () => {
 
     envelope.classList.toggle("open");
 
-    heartBurst();
+    // Only show hearts when opening
+    if (envelope.classList.contains("open")) {
 
-});
-
-// ==========================================
-// Friendship Day Wish Board
-// ==========================================
-
-const wishInput = document.getElementById("wishInput");
-const saveWish = document.getElementById("saveWish");
-const savedMsg = document.getElementById("savedMsg");
-
-// Load saved wish
-const storedWish = localStorage.getItem("friendshipWish");
-
-if(storedWish){
-    wishInput.value = storedWish;
-}
-
-saveWish.addEventListener("click",()=>{
-
-    if(wishInput.value.trim()===""){
-
-        savedMsg.style.color="red";
-        savedMsg.innerHTML="Please write a wish first ❤️";
-        return;
-
-    }
-
-    localStorage.setItem("friendshipWish",wishInput.value);
-
-    savedMsg.style.color="green";
-    savedMsg.innerHTML="✅ Your wish has been saved!";
-});
-
-const PASSWORD = "ana2711gube";   // Change this to your own password
-
-const unlockBtn = document.getElementById("unlockBtn");
-const passwordInput = document.getElementById("password");
-const lockScreen = document.getElementById("lockScreen");
-const website = document.getElementById("website");
-const error = document.getElementById("error");
-
-unlockBtn.addEventListener("click", unlock);
-
-passwordInput.addEventListener("keypress", function(e){
-
-    if(e.key==="Enter"){
-
-        unlock();
+        heartBurst();
 
     }
 
 });
 
-function unlock(){
+/* /* ===================================================
+   HEART BURST EFFECT
+=================================================== */
 
-    if(passwordInput.value===PASSWORD){
+function heartBurst() {
 
-        lockScreen.style.opacity="0";
+    const rect = envelope.getBoundingClientRect();
 
-        setTimeout(()=>{
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
 
-            lockScreen.style.display="none";
+    const hearts = ["❤️", "💖", "💙", "💕", "💗"];
 
-            website.style.display="block";
+    for (let i = 0; i < 25; i++) {
 
-            website.style.animation="fadeIn 1s";
+        const heart = document.createElement("div");
 
-        },500);
+        heart.className = "burst-heart";
 
-    }
+        heart.innerHTML =
+            hearts[Math.floor(Math.random() * hearts.length)];
 
-    else{
+        heart.style.left = centerX + "px";
+        heart.style.top = centerY + "px";
 
-        error.innerHTML="❌ Incorrect password";
+        heart.style.fontSize =
+            (18 + Math.random() * 20) + "px";
 
-        document.querySelector(".lockCard").classList.add("shake");
+        const angle = Math.random() * Math.PI * 2;
 
-        setTimeout(()=>{
+        const distance = 120 + Math.random() * 220;
 
-            document.querySelector(".lockCard").classList.remove("shake");
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
 
-        },400);
+        heart.style.setProperty("--x", x + "px");
+        heart.style.setProperty("--y", y + "px");
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+
+            heart.remove();
+
+        }, 1800);
 
     }
 
 }
-
-// ==========================
-// Music Player
-// ==========================
-
-const music = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicBtn");
-const musicText = document.getElementById("musicText");
-
-let playing = false;
-
-musicBtn.addEventListener("click", () => {
-
-    if(!playing){
-
-        music.play();
-
-        musicBtn.innerHTML = "⏸️";
-
-        musicText.innerHTML = "Now Playing ❤️";
-
-    }
-
-    else{
-
-        music.pause();
-
-        musicBtn.innerHTML = "▶️";
-
-        musicText.innerHTML = "Continue Playing";
-
-    }
-
-    playing = !playing;
-
-});
-
-const board = document.getElementById("wishBoard");
-const sendBtn = document.getElementById("sendWish");
-
-sendBtn.addEventListener("click", async () => {
-
-    const name = document.getElementById("name").value;
-    const wish = document.getElementById("wish").value.trim();
-
-    if (wish === "") return;
-
-    await addDoc(collection(db, "wishes"), {
-
-        name,
-        wish,
-        time: serverTimestamp()
-
-    });
-
-    document.getElementById("wish").value = "";
-
-});
-
-const q = query(
-    collection(db, "wishes"),
-    orderBy("time", "desc")
-);
-
-onSnapshot(q, (snapshot) => {
-
-    board.innerHTML = "";
-
-    snapshot.forEach((doc) => {
-
-        const data = doc.data();
-
-        const card = document.createElement("div");
-
-        card.className = "wish-card";
-
-        let date = "";
-
-        if (data.time) {
-
-            date = data.time.toDate().toLocaleString();
-
-        }
-
-        card.innerHTML = `
-
-            <h3>${data.name}</h3>
-
-            <p>${data.wish}</p>
-
-            <div class="wish-date">
-                🕒 ${date}
-            </div>
-
-        `;
-
-        board.appendChild(card);
-
-    });
-
-});
