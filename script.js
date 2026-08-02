@@ -494,3 +494,38 @@ onSnapshot(wishesQuery,(snapshot)=>{
     });
 
 });
+// ==========================
+// Music Player
+// ==========================
+
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+const musicText = document.getElementById("musicText");
+
+let playing = false;
+
+musicBtn.addEventListener("click", () => {
+
+    if(!playing){
+
+        music.play();
+
+        musicBtn.innerHTML = "⏸️";
+
+        musicText.innerHTML = "Now Playing ❤️";
+
+    }
+
+    else{
+
+        music.pause();
+
+        musicBtn.innerHTML = "▶️";
+
+        musicText.innerHTML = "continue Song";
+
+    }
+
+    playing = !playing;
+
+});
