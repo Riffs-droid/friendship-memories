@@ -867,17 +867,17 @@ font-size:18px;
 
 }
 
-/* ===================================================
-   MUSIC PLAYER
-=================================================== */
+ /* ==========================
+   Music Player
+========================== */
 
 .music-player{
 
     position:fixed;
 
-    right:25px;
-
     bottom:25px;
+
+    right:25px;
 
     display:flex;
 
@@ -887,13 +887,15 @@ font-size:18px;
 
     padding:12px 20px;
 
-    border-radius:60px;
+    border-radius:50px;
 
     background:rgba(255,255,255,.18);
 
     backdrop-filter:blur(15px);
 
-    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    color:white;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
 
     z-index:999;
 
@@ -901,9 +903,9 @@ font-size:18px;
 
 .music-player button{
 
-    width:48px;
+    width:45px;
 
-    height:48px;
+    height:45px;
 
     border:none;
 
@@ -928,6 +930,26 @@ font-size:18px;
 #musicText{
 
     font-weight:600;
+
+}
+
+@media(max-width:600px){
+
+.music-player{
+
+right:15px;
+
+bottom:15px;
+
+padding:10px 16px;
+
+}
+
+#musicText{
+
+    font-weight:300;
+
+}
 
 }
 
